@@ -1,5 +1,5 @@
-# Feihong's ProtonNative Quickstart
+# Feihong's Proton Native Quickstart
 
 ## Run
 
-    node src/index.js
+    yarn start
