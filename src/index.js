@@ -11,11 +11,11 @@ class Demo extends Component {
         </Menu>
         <Window title="Demo" size={{ w: 300, h: 300 }} menuBar={false} margined>
           <Box>
-            <Box vertical={false}>
-              <Button stretchy={true} onClick={() => console.log('Hello')}>
+            <Box vertical={false} stretchy={false}>
+              <Button stretchy={false} onClick={() => console.log('Hello')}>
                 Button
             </Button>
-              <Text> This is a text </Text>
+              <Text stretch={false}> This is a text </Text>
             </Box>
             <Separator />
             <TextInput> 你好世界！ </TextInput>
