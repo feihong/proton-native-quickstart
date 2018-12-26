@@ -1,8 +1,27 @@
 import React, { Component } from 'react'
-import { render, Window, App, Menu, Box, Button, Separator, Text, TextInput }
+import { render, Window, App, Menu, Box, Button, Separator, StyledText, TextInput }
   from 'proton-native'
 
+// Return a number between min and max (inclusive)
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function getRandomHanzi() {
+  let codePoint = getRandomInt(0x4e00, 0x9fff)
+  return String.fromCodePoint(codePoint)
+}
+
 class Demo extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { text: '火' }
+  }
+
+  handleClick = () => {
+    this.setState({ text: getRandomHanzi() })
+  }
+
   render() {
     return (
       <App onShouldQuit={() => console.log('quitting')}>
@@ -11,11 +30,11 @@ class Demo extends Component {
         </Menu>
         <Window title="Demo" size={{ w: 300, h: 300 }} menuBar={false} margined>
           <Box>
-            <Box vertical={false} stretchy={false}>
-              <Button stretchy={false} onClick={() => console.log('Hello')}>
-                Button
+            <Box vertical={false} stretchy={true}>
+              <Button stretchy={true} onClick={this.handleClick}>
+                Click me
             </Button>
-              <Text stretch={false}> This is a text </Text>
+              <StyledText style={{ fontSize: 48, color: 'white' }}> {this.state.text} </StyledText>
             </Box>
             <Separator />
             <TextInput> 你好世界！ </TextInput>
