@@ -16,6 +16,7 @@
     "proton-native": "^1.1.10"
   },
   "scripts": {
-    "start": "babel-node src/index.js"
+    "start": "yarn launch & source focus.sh",
+    "launch": "babel-node src/index.js"
   }
 }
