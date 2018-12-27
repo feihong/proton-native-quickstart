@@ -1,3 +1,4 @@
+import childProcess from 'child_process'
 import React, { Component } from 'react'
 import { render, Window, App, Menu, Box, Button, Separator, StyledText, TextInput }
   from 'proton-native'
@@ -18,6 +19,16 @@ class Demo extends Component {
     this.state = { text: '火' }
   }
 
+  componentDidMount() {
+    console.log('mounted');
+    // Give this window focus:
+    childProcess.spawnSync('osascript', ['-l', 'JavaScript', '-e',
+      `SystemEvents = Application("System Events");
+      node = SystemEvents.processes["node"];
+      node.frontmost = true;`
+    ])
+  }
+
   handleClick = () => {
     this.setState({ text: getRandomHanzi() })
   }
@@ -28,7 +39,7 @@ class Demo extends Component {
         <Menu>
           <Menu.Item type='Quit' />
         </Menu>
-        <Window title="Demo" size={{ w: 300, h: 300 }} menuBar={false} margined>
+        <Window title="Proton Native Demo" size={{ w: 300, h: 300 }} menuBar={false} margined>
           <Box>
             <Box vertical={false} stretchy={true}>
               <Button stretchy={true} onClick={this.handleClick}>

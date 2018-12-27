@@ -18,8 +18,6 @@
     "proton-native": "^1.1.10"
   },
   "scripts": {
-    "start": "run-p launch focus",
-    "launch": "babel-node src/index.js",
-    "focus": "source focus.sh"
+    "start": "babel-node src/index.js"
   }
 }
